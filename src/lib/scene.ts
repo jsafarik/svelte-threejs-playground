@@ -7,6 +7,7 @@ export class Scene {
 	aspectRatio;
 	setup;
 	draw;
+	currentAnimationFrame = 0;
 
 	constructor(canvas: HTMLElement, setup: (scene: Scene) => void, draw: () => void) {
 		this.aspectRatio = window.innerWidth / window.innerHeight;
@@ -34,6 +35,10 @@ export class Scene {
 	animate() {
 		this.draw();
 		this.renderer.render(this.scene, this.camera);
-		requestAnimationFrame(() => this.animate());
+		this.currentAnimationFrame = requestAnimationFrame(() => this.animate());
+	}
+
+	stop() {
+		cancelAnimationFrame(this.currentAnimationFrame);
 	}
 }
