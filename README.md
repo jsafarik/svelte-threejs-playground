@@ -1,38 +1,10 @@
-# create-svelte
+# Svelte Three.js playground
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Just a little personal playground for writing Three.js sketches inside a Svelte project.
 
-## Creating a project
+> [!WARNING]
+> I'm not really a js developer, often I have no idea what I'm doing, do not take this project as any kind of inspiration.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Running
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Since this is not really meant to be deployed anywhere, simple local run of `npm run dev` (after `npm install`) is enough.
