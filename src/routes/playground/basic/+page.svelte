@@ -9,7 +9,7 @@
 		const geometry = new THREE.BoxGeometry();
 		const material = new THREE.MeshBasicMaterial({ color: 0xff5012 });
 		cube = new THREE.Mesh(geometry, material);
-		scene.add3dObject(cube);
+		scene.addObject(cube);
 		scene.camera.position.z = 4;
 	};
 

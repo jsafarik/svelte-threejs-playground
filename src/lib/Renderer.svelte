@@ -3,7 +3,7 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	export let setup: (scene: Scene) => void;
-	export let draw: () => void;
+	export let draw: (() => void) | undefined = undefined;
 
 	let canvas: HTMLElement;
 	let scene: Scene | undefined;

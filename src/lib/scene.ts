@@ -9,7 +9,7 @@ export class Scene {
 	draw;
 	currentAnimationFrame = 0;
 
-	constructor(canvas: HTMLElement, setup: (scene: Scene) => void, draw: () => void) {
+	constructor(canvas: HTMLElement, setup: (scene: Scene) => void, draw: (() => void) | undefined) {
 		this.aspectRatio = window.innerWidth / window.innerHeight;
 		this.scene = new THREE.Scene();
 
@@ -23,22 +23,27 @@ export class Scene {
 		this.draw = draw;
 	}
 
-	add3dObject(object: THREE.Object3D) {
+	addObject(object: THREE.Object3D) {
 		this.scene.add(object);
 	}
 
 	run() {
 		this.setup(this);
-		this.animate();
+		this.renderer.render(this.scene, this.camera);
+		if (this.draw) {
+			this.animate();
+		}
 	}
 
 	animate() {
-		this.draw();
+		this.draw!();
 		this.renderer.render(this.scene, this.camera);
 		this.currentAnimationFrame = requestAnimationFrame(() => this.animate());
 	}
 
 	stop() {
-		cancelAnimationFrame(this.currentAnimationFrame);
+		if (this.draw) {
+			cancelAnimationFrame(this.currentAnimationFrame);
+		}
 	}
 }
