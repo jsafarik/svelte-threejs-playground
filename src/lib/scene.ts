@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 
+export type Setup = (scene: Scene) => void;
+export type Draw = ((scene: Scene) => void) | undefined;
+
 export class Scene {
 	scene;
 	camera;
@@ -9,7 +12,7 @@ export class Scene {
 	draw;
 	currentAnimationFrame = 0;
 
-	constructor(canvas: HTMLElement, setup: (scene: Scene) => void, draw: (() => void) | undefined) {
+	constructor(canvas: HTMLElement, setup: Setup, draw: Draw) {
 		this.aspectRatio = window.innerWidth / window.innerHeight;
 		this.scene = new THREE.Scene();
 
@@ -36,7 +39,7 @@ export class Scene {
 	}
 
 	animate() {
-		this.draw!();
+		this.draw!(this);
 		this.renderer.render(this.scene, this.camera);
 		this.currentAnimationFrame = requestAnimationFrame(() => this.animate());
 	}

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Scene } from '$lib/scene';
+	import { Scene, type Draw, type Setup } from '$lib/scene';
 	import { onDestroy, onMount } from 'svelte';
 
-	export let setup: (scene: Scene) => void;
-	export let draw: (() => void) | undefined = undefined;
+	export let setup: Setup;
+	export let draw: Draw = undefined;
 
 	let canvas: HTMLElement;
 	let scene: Scene | undefined;
